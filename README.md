@@ -5,12 +5,12 @@ allowing users to accept or decline cookies used by the documentation site.
 
 ## Installation
 
-``sh
+```sh
 npm install --save-dev @vpalmisano/typedoc-cookie-consent
 ```
 
 ## Options
-Example usage with the `typedoc-plugin-ga` plugin:
+Example usage with the [typedoc-plugin-ga plugin](https://github.com/euberdeveloper/typedoc-plugin-ga):
 
 ```
 "typedocOptions": {
