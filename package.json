@@ -1,6 +1,6 @@
 {
   "name": "@vpalmisano/typedoc-cookie-consent",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Vittorio Palmisano",
   "description": "A TypeDoc plugin to add a cookie consent banner to your documentation.",
   "license": "MIT",

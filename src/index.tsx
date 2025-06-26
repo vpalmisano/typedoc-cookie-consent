@@ -137,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
       JSX.createElement("script", {
         src: "https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.umd.js",
         type: "module",
+        async: true,
       }),
       JSX.createElement(
         "script",

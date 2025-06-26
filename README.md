@@ -4,13 +4,16 @@ This plugin adds a cookie consent to the generated documentation powered by http
 allowing users to accept or decline cookies used by the documentation site.
 
 ## Options
+Example usage with `typedoc-plugin-ga` plugin:
 
 ```
-"cookieConsent": {
-  "enabled": true,
-  "showPreferencesBtn": true,
-  "config": {
-    // A valid cookie consent configuration (https://cookieconsent.orestbida.com/reference/configuration-reference.html)
+  "gaID": "UA-XXXXXXXXX-X",
+  "gaCookieConsentCategory": "analytics",
+  "cookieConsent": {
+    "enabled": true,
+    "showPreferencesBtn": true,
+    "config": {
+      // A valid cookie consent configuration (https://cookieconsent.orestbida.com/reference/configuration-reference.html)
+    }
   }
-}
 ```
