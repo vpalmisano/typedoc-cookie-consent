@@ -19,7 +19,10 @@ Example usage with the [typedoc-plugin-ga plugin](https://github.com/euberdevelo
     "@vpalmisano/typedoc-cookie-consent"
   ],
   "gaID": "UA-XXXXXXXXX-X",
-  "gaCookieConsentCategory": "analytics",
+  "gaProperties": {
+    "type": "text/plain",
+    "data-category": "analytics"
+  },
   "cookieConsent": {
     "enabled": true,
     "showPreferencesBtn": true,
