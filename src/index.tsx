@@ -22,7 +22,7 @@ const CONFIG_DEFAULT: CookieConsentConfig = {
       autoClear: {
         cookies: [
           {
-            name: /^(_ga|_gid)/,
+            name: "_ga",
           },
         ],
         reloadPage: true,
@@ -59,7 +59,6 @@ const CONFIG_DEFAULT: CookieConsentConfig = {
                   name: "Name",
                   domain: "Service",
                   description: "Description",
-                  expiration: "Expiration",
                 },
                 body: [
                   {
@@ -67,14 +66,6 @@ const CONFIG_DEFAULT: CookieConsentConfig = {
                     domain: "Google Analytics",
                     description:
                       'Cookie set by <a href="#das">Google Analytics</a>.',
-                    expiration: "Expires after 12 days",
-                  },
-                  {
-                    name: "_gid",
-                    domain: "Google Analytics",
-                    description:
-                      'Cookie set by <a href="#das">Google Analytics</a>',
-                    expiration: "Session",
                   },
                 ],
               },
@@ -111,6 +102,8 @@ export function load(app: Application) {
     }
     const opts = JSON.stringify(options.config);
     const script = `
+import "https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.umd.js";
+
 const link = document.createElement("link");
 link.setAttribute("rel", "stylesheet");
 link.setAttribute("href", "https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.css");
@@ -129,21 +122,12 @@ document.querySelector('footer').appendChild(button);
     : ""
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    CookieConsent.run(${opts})
-});
+document.addEventListener('DOMContentLoaded', () => CookieConsent.run(${opts}));
 `.trim();
-    return JSX.createElement(JSX.Fragment, null, [
-      JSX.createElement("script", {
-        src: "https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.umd.js",
-        type: "module",
-        async: true,
-      }),
-      JSX.createElement(
-        "script",
-        { type: "module" },
-        JSX.createElement(JSX.Raw, { html: script }),
-      ),
-    ]);
+    return JSX.createElement(
+      "script",
+      { id: "typedoc-cookie-consent", type: "module" },
+      JSX.createElement(JSX.Raw, { html: script }),
+    );
   });
 }
